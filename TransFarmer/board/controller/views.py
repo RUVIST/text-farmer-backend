@@ -7,11 +7,16 @@ from board.serializers import BoardSerializer
 from board.service.board_service_impl import BoardServiceImpl
 
 
+# Create your views here.
+
+
 class BoardView(viewsets.ViewSet):
     queryset = Board.objects.all()
     boardService = BoardServiceImpl.getInstance()
 
     def list(self, request):
         boardList = self.boardService.list()
+        print('boardList:', boardList)
         serializer = BoardSerializer(boardList, many=True)
+        print('serialized boardList:', serializer.data)
         return Response(serializer.data)

@@ -1,4 +1,4 @@
-# python 3.8 이미지 기반
+# Python 3.x 이미지 기반
 FROM python:3.12
 
 # 작업 디렉토리 설정
