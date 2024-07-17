@@ -1,4 +1,4 @@
-name: Django CI (Continous Integration)
+name: Django CI (Continuous Integration)
 
 on:
   push:
@@ -74,8 +74,8 @@ jobs:
     - name: Wait for MySQL to be ready
       working-directory: ./TransFarmers
       run: |
-        for i in {60, 0}; do
-          if mysqladmin ping -h "127.0.01" --silent; then
+        for i in {60..0}; do
+          if mysqladmin ping -h "127.0.0.1" --silent; then
             break
           fi
           echo 'MySQL is unavailable - sleeping'
@@ -87,7 +87,14 @@ jobs:
           exit 1
         fi
         echo 'MySQL is up - continuning'
+
     - name: Make migrations
+      working-directory: ./TransFarmers
+      run: |
+        source .venv/bin/activate
+        python manage.py makemigrations
+
+    - name: Run migrate
       working-directory: ./TransFarmers
       run: |
         source .venv/bin/activate
