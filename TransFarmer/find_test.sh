@@ -3,14 +3,11 @@
 TEST_DIRS=$(find . -path ./.cenc -prune -o -type d -name 'tests' -print)
 
 APP_TESTS=()
-#!/usr/bin/env zsh
-
-TEST_DIRS=$(find . -path ./.venv -prune -o -type d -name 'tests' -print)
 
 # mac이면 아래와 같이
-#source .venv/bin/activate
+# source .venv/bin/activate
 # window면 아래와 같이
- source .venv/Scripts/activate
+# source .venv/Scripts/activate
 
 for TEST_DIR in $TEST_DIRS; do
   APP_NAME=$(basename $(dirname $TEST_DIR))
@@ -20,10 +17,6 @@ for TEST_DIR in $TEST_DIRS; do
     continue
   fi
 
-  APP_TESTS+=("${APP_NAME},tests")
-done
-
-echo "${APP_TESTS[@]}"
   APP_TESTS+=("${APP_NAME}.tests")
 done
 
