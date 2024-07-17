@@ -10,26 +10,26 @@ jobs:
 
     steps:
     - name: Setup MySQL
-    uses: samin/mysql-action@v1
-    with:
-      character set server: 'utf8'
-      mysql database: ${{ secrets.DATABASE_NAME }}
-      mysql user: ${{ secrets.DATABASE_USER }}
-      mysql password: ${{ secrets.DATABASE_PASSWORD }}
+      uses: samin/mysql-action@v1
+      with:
+        character set server: 'utf8'
+        mysql database: ${{ secrets.DATABASE_NAME }}
+        mysql user: ${{ secrets.DATABASE_USER }}
+        mysql password: ${{ secrets.DATABASE_PASSWORD }}
 
     - name: Checkout code
       uses: actions/checkout@v3
 
     - name: Set up Python
-    uses: actions/setup-python@v2
-    with:
-      python-version: 3.12
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.12
 
     - name: Check current directory
       run: pwd
 
     - name: List files in current directory
-      runs: ls -la
+      run: ls -la
 
     - name: Cache pip
       uses: actions/cache@v3
