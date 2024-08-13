@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 services:
   django:
     container_name: django
@@ -63,9 +63,9 @@ services:
       - app-network
 
 volumes:
-  db_data:
-  redis_data:
-  app:
+    db_data:
+    redis_data:
+    app:
 
 networks:
   app-network:
